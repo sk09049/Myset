@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+div.as{
+margin-left:500px;
+margin-top:300px;
+}
+body{background-image:url("image.jpg");}
+input[type="email"]{
+border:5px solid white;
+border-radius:5px;
+width:300px;
+height:50px;
+}
+input[type="password"]{
+border:5px solid white;
+border-radius:5px;
+width:300px;
+height:50px;
+}
+input[type="submit"]{
+border:solid 2px blue;background-color:blue;
+border-radius:5px;
+width:70px;
+height:25px;
+margin-left:300px;
+margin-top:20px;
+color:white;}
+
+</style>
+<body>
+<div class="container-fluid">
+<form>
+<div class="as">
+Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    :
+<input class="a" type="email" name="email" placeholder="enter email id"  required="required"><br/><br/>
+Password :
+<input  class="b" type="password" name="password" placeholder="enter password" ></br></br>
+<input class="a1"type="submit" onClick= "g()" >
+</div>
+</form>
+</div>
+</body>
+<script type=text/javascript>
+function g(){
+var ab=document.getElementsByName("email")[0].value;
+var ab1=document.getElementsByName("password")[0].value;
+if(ab==''){
+alert("enter username");
+}
+if(ab1==''){
+alert("enter password");
+}
+if(ab!=''&&ab1!=''){
+alert("welcome :"+ab);
+}
+}
+
+</script>
+</html>
