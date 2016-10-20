@@ -1,0 +1,16 @@
+problem-description:getting username and password from user through html form input elements.and validating them.if they are valid redirect to 
+welcome page and greet user.else display error message in samepage.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+files:
+1.index.jsp (loginpage)
+2.welcome.jsp(greeting page)
+3.servlet.java(controller servlet)
+ 
+in this project i use fixed username=cassey & password=password
+
+steps  i do for running the projects:
+---------------------------------------
+ide used:eclipse
+created maven project
+
+
