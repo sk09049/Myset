@@ -1,0 +1,9 @@
+in this submit i have done basic  (basic)navbar  using bootstrap and done some navigation with the help of controller jstl .
+-----------------------------------------------------------------------------------------------------------------------------
+output of this submit:
+at the time of opening of index page navbar have options for home and etc. and only for  login  at the right side.
+when user successfully signed in .
+in nav bar instead of login ,logout and mycart options will appear onthe rightside.
+when user clicks logout.only login appears on the right side of the nav bar.until all options are available other than login.
+ 
+
