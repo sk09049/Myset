@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="shippingAddress" class="com.niit.scartbackend.model.ShippingAddress"/>
+<var name="order" class="com.niit.scartbackend.model.Order"/>
+<var name="flowlo" class="com.niit.scart.webflow.flowlogic"/>
+<var name="billingAddress" class="com.niit.scartbackend.model.BillingAddress"/>
+<action-state id="flowExecutor">
+<evaluate expression="flowlo.initwebflow()" result="order"></evaluate>
+<transition to="viewshippingpage"></transition></action-state>
+<view-state id="viewshippingpage" view="views/user/shippingAddress.jsp" model="shippingAddress">
+<transition on="submitshippingaddress" to="shipaddressbinding"></transition>
+</view-state>
+<action-state id="shipaddressbinding">
+<evaluate expression="flowlo.addShippinAddress(order,shippingAddress)"></evaluate>
+<transition on="success" to="toome"></transition></action-state>
+<end-state id="toome" view="views/index.jsp"></end-state>
+<view-state id="viewbillingjsp" view="views/user/billingAddress.jsp" model="billingAddress">
+<transition on="submitbillingaddress" to="topaymentdetails"></transition>
+</view-state>
+<view-state id="topaymentdetails">
+
+</view-state>
+</flow>

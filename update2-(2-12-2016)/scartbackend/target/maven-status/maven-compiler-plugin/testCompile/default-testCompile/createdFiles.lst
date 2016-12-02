@@ -1,0 +1,8 @@
+com/niit/scartbackend/SupplierTestCase.class
+com/niit/scartbackend/ShippingAddressTestCase.class
+com/niit/scartbackend/CartTestCase.class
+com/niit/scartbackend/UserTestCase.class
+com/niit/scartbackend/CategoryTestCase.class
+com/niit/scartbackend/OrderTestCase.class
+com/niit/scartbackend/BillingAddressTestCase.class
+com/niit/scartbackend/ProductTestCase.class
