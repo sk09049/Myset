@@ -1,0 +1,33 @@
+					Project Details 
+					----------------
+
+Frond end Project:
+------------------
+Name:scart
+Type:Maven web application
+
+Back end project:
+------------------
+Name:scartbackend
+Type:Maven quickstart
+Database used:h2
+
+things to do while running projcts:
+-----------------------------------
+in h2 login page change below things if not matched
+jdbc url="jdbc:h2:tcp://localhost/~/test"
+username="sa"
+password=""
+
+After done above things
+Tables will be created automatically.
+-----------------------------------------------------------------------------------------------------------------------------------
+1)manually insert row for the admin credentilas.in that the role column must have value as 'ROLE_ADMIN' this part is case sensitive.
+-------------------------------------------------------------------------------------------------------------------------------------
+2)if tables are created automatically,in cart table change price column datatype to double 
+-------------------------------------------------------------------------------------------
+3)After doing that login with the email id (as user column in user table) and password (as pass in user table).
+after that admin can do crud operations on category,product,supplier tables.
+
+4)After sign up as a user he/she can able to login,buy and add the product to the cart.
+5)other than admin and registered users ,they can view and search the products.

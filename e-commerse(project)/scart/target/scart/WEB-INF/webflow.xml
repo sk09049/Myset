@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="shippingAddress" class="com.niit.scartbackend.model.ShippingAddress"/>
+<var name="order" class="com.niit.scartbackend.model.Order"/>
+<var name="flowlo" class="com.niit.scart.webflow.flowlogic"/>
+<var name="billingAddress" class="com.niit.scartbackend.model.BillingAddress"/>
+<var name="paymentdetails" class="com.niit.scartbackend.model.Paymentdetails"/>
+<on-start>
+<evaluate expression="flowlo.initwebflow()" result="order"></evaluate>
+</on-start>
+<view-state id="flowExecutor" view="views/user/shippingAddress.jsp" model="shippingAddress">
+<transition on="submitshippingaddress" to="viewbillingjsp"></transition>
+</view-state>
+
+<action-state id="shipaddressbinding">
+<evaluate expression="flowlo.addShippinAddress(order,shippingAddress)"></evaluate>
+<transition on="success" to="viewbillingjsp"></transition></action-state>
+
+<view-state id="viewbillingjsp" view="views/user/billingAddress.jsp" model="billingAddress">
+<transition on="submitbillingaddress" to="topaymentdetails"></transition>
+</view-state>
+
+<view-state id="topaymentdetails" view="views/user/paymentdetails.jsp">
+<transition on="cod" to="thankyou"></transition>
+<transition on="netbanking" to="tohomee"></transition>
+</view-state>
+<action-state id="thankyou">
+<evaluate expression="flowlo.generatecod(order,shippingAddress,billingAddress)"></evaluate>
+<transition on="success" to="tohome"></transition>
+</action-state>
+<view-state id="tohomee" view="views/home.jsp">
+</view-state>
+<end-state id="tohome" view="views/index.jsp"></end-state>
+</flow>

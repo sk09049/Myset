@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="shippingAddress" class="com.niit.scartbackend.model.ShippingAddress"/>
+<var name="order" class="com.niit.scartbackend.model.Order"/>
+<var name="flowlo" class="com.niit.scart.webflow.flowlogic"/>
+<var name="billingAddress" class="com.niit.scartbackend.model.BillingAddress"/>
+<var name="paymentdetails" class="com.niit.scartbackend.model.Paymentdetails"/>
+<var name="product" class="com.niit.scartbackend.model.Product"/>
+<on-start>
+   <set name="flowScope.myView" value="requestParameters.uid"/>
+      <set name="flowScope.quantity" value="requestParameters.uid"/> 
+            <set name="flowScope.forsinglecartproduct" value="requestParameters.uid"/>     
+          
+<evaluate expression="flowlo.initwebflow()" result="order"></evaluate>
+</on-start>
+<view-state id="viewshipping" view="views/user/shippingAddress.jsp" model="shippingAddress">
+<transition on="submitshippingaddress" to="viewbillingjsp"></transition>
+</view-state>
+<end-state id="tohome" view="views/index.jsp"></end-state>
+<view-state id="viewbillingjsp" view="views/user/billingAddress.jsp" model="billingAddress">
+<transition on="submitbillingaddress" to="topaymentdetails"></transition>
+<transition on="back" to="viewshipping"></transition>
+</view-state>
+
+<view-state id="topaymentdetails" view="views/user/paymentdetails.jsp" model="paymentdetails">
+<transition on="cod" to="getprice"></transition>
+<transition on="netbanking" to="netgetprice"></transition>
+<transition on="back" to="viewbillingjsp"></transition>
+</view-state>
+<action-state id="getprice">
+<evaluate expression="flowlo.getprice(myView)" result="product"></evaluate>
+<transition to="getquantity"></transition>
+</action-state>
+<action-state id="netgetprice">
+<evaluate expression="flowlo.getprice(myView)" result="product"></evaluate>
+<transition to="netgetquantity"></transition>
+</action-state>
+<action-state id="getquantity">
+<evaluate expression="flowlo.getquantity(myView)" result="quantity"></evaluate>
+<transition to="orderconfirm"></transition>
+</action-state>
+<action-state id="netgetquantity">
+<evaluate expression="flowlo.getquantity(myView)" result="quantity"></evaluate>
+<transition to="netconfirm"></transition>
+</action-state>
+<view-state id="netconfirm" view="views/user/codconfirm.jsp">
+<transition on="confirm" to="viewnetconfirm"></transition>
+<transition on="back" to="topaymentdetails"></transition>
+</view-state>
+<view-state id="viewnetconfirm" view="views/user/netconfirm.jsp">
+<transition on="confirm" to="netsavetodb"></transition>
+<transition on="back" to="netconfirm"></transition>
+</view-state>
+<action-state id="netsavetodb">
+<evaluate expression="flowlo.generatenet(order,shippingAddress,billingAddress,product,quantity,forsinglecartproduct)"></evaluate>
+<transition on="success" to="thankyou"></transition>
+</action-state>
+<view-state id="orderconfirm" view="views/user/codconfirm.jsp">
+<transition on="confirm" to="codconfirm"></transition>
+<transition on="back" to="topaymentdetails"></transition>
+</view-state>
+
+<action-state id="paymentmode">
+<evaluate expression="flowlo.paymentmethod(paymentdetails)"></evaluate>
+
+<transition on="cod" to="tohome"></transition>
+<transition on="net banking" to="tohomee"></transition>
+</action-state>
+<action-state id="codconfirm">
+<evaluate expression="flowlo.generatecod(order,shippingAddress,billingAddress,product,quantity,forsinglecartproduct)"></evaluate>
+<transition on="success" to="thankyou"></transition>
+</action-state>
+<view-state id="tohomee" view="views/home.jsp">
+</view-state>
+<view-state id="thankyou" view="views/orderconfirm.jsp">
+</view-state>
+<global-transitions>
+<transition on="cancel" to="tohome"></transition>
+</global-transitions>
+</flow>

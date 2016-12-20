@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+<var name="shippingAddress" class="com.niit.scartbackend.model.ShippingAddress"/>
+<var name="order" class="com.niit.scartbackend.model.Order"/>
+<var name="flowlo" class="com.niit.scart.webflow.flowlogic"/>
+<action-state id="init">
+<evaluate expression="flowlo.initwebflow()" result="order"></evaluate></action-state>
+<view-state id="flowExecutor" view="views/shippingAddress.jsp" model="shippingAddress">
+<transition on="submitshippingaddress" to="tohome"></transition>
+</view-state>
+<action-state id="tohome">
+<evaluate expression="flowlo.addShippinAddress()"></evaluate>
+<transition on="success" to="toome"></transition></action-state>
+<end-state id="toome" view="views/index.jsp"></end-state>
+</flow>
