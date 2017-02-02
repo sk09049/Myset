@@ -1,0 +1,9 @@
+<div ng-controller="friendControl as ctrl" ng-init="ctrl.getRequest()">
+<h3 class="text-primary col-xs-offset-2">Friend Requests send by me</h3>
+<hr>
+<div ng-repeat="x in ctrl.myrequest" class="col-xs-offset-2">
+<h4>To: <span class="text-info">{{x.friend_id}}</span></h4>
+<h4>Status :<span class="text-info">{{x.status}}</span></h4>
+<hr>
+</div>
+</div>

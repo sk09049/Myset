@@ -1,0 +1,17 @@
+<div ng-controller="jobControl as ctrl" ng-init="ctrl.appliedJobs(currentUser.id)" style="padding-top:70px;">
+<h3 class="col-xs-offset-4">Applied Job Details</h3>
+<hr>
+<div ng-repeat="x in ctrl.appliedjobs" class="col-xs-offset-2">
+<h4>{{$index+1}})job id&ensp;&ensp;:<span class="text-primary">{{x.id}}</span></h4>
+<h4>job status:<span class="text-primary">{{x.remarks}}</span></h4>
+<div ng-show="x.errorCode=='404'">
+<div class="row">
+<h3 class="alert alert-info col-xs-offset-2 col-xs-5">{{x.errorMessage}}</h3></div>
+<br>
+<div class="row">
+<h4 class="col-xs-offset-2">To View & Apply <a href="#" ng-click="ctrl.viewNewJobs()">Click Here</a></h4>
+</div>
+</div>
+<hr>
+</div>
+</div>

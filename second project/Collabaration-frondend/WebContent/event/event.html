@@ -1,0 +1,16 @@
+<div ng-controller="eventControl as ctrl" style="padding-top:50px;" ng-init="ctrl.eventList()">
+<h3 class="col-xs-offset-2 text-primary">List Of Events</h3>
+<hr>
+<div ng-repeat="x in ctrl.events" class="col-xs-offset-2">
+
+<div ng-show="x.errorCode=='404'">
+<h3 class="text-warning">{{x.errorMessage}}</h3> 
+</div>
+<div ng-show="ctrl.date < ctrl.parsing(x.date_time)">
+<p><span class="text-primary">Event Title &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; :</span>{{ x.eventTitle}}</p>
+<p><span class="text-primary">Event Description&ensp;:</span>{{x.eventDescription}}</p>
+<p><span class="text-primary">Event Date&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;:</span>{{x.date_time | date}}</p>
+</div>
+<hr ng-show="ctrl.date < ctrl.parsing(x.date_time)">
+</div>
+</div>

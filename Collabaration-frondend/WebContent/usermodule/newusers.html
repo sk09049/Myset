@@ -1,0 +1,45 @@
+<div ng-controller="userController as temp" style="padding-top:50px;">
+<div>
+<h3 class="col-xs-offset-2 text-primary">{{rejectmsg}}
+{{approvalstatus}}</h3>
+</div>
+<table class="table table-bordered table-striped" ng-hide="approvalstatus!=null ||  rejectmsg!=null">
+<thead>
+<tr>
+<th>Id</th><th>Name</th>
+<th>Role</th><th>Email</th><th>Phone</th><th>Status</th><th>Is_verified</th><th>Approve/Reject</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat=" users in newusers">
+<td>
+{{users.id}}
+</td><td>
+{{users.name}}
+</td><td>
+<span ng-show="users.id==null">{{users.errorMessage}}</span>
+{{users.role}}
+</td><td>
+{{users.email}}
+</td><td>
+{{users.mobile}}
+</td><td>
+{{users.status}}
+</td>
+<td>{{users.is_verified}}</td>
+<td ng-show="users.id!=null">
+<span ng-click="temp.newUserApproval(users.id)" style="cursor:pointer;cursor: hand;">Approve</span > / 
+<span ng-click="temp.setMyvalue(users.id)"  style="cursor:pointer;cursor: hand;">Reject</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div ng-hide="rejectmsg!=null">
+<div ng-show="myvalue!=null">
+<form ng-submit="temp.newUserReject()">
+<textarea rows="5" cols="20" class="form-control col-xs-3" ng-model="temp.reason" placeholder="reason for rejection" maxlength="50" required></textarea>
+<input type="submit" value="send" class="btn btn-info">
+</form>
+</div>
+</div>
+</div>

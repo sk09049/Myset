@@ -1,0 +1,24 @@
+<div ng-controller="ChatController" class="container" style="padding-top:50px;">
+
+<form ng-submit="addMessage()" name="messageForm">
+<div class="row">
+<div class="form-group col-xs-offset-2 col-xs-4">
+ <input type="text" class="form-control" placeholder="Type a new message..." ng-model="message" />
+ </div>
+ </div>
+   <div class="info col-xs-offset-2">
+     <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+       <button ng-disabled="message.length > max || message.length === 0" class="btn btn-info col-xs-offset-3">send</button>
+       </div>
+      </form>
+     <hr />
+     <p ng-repeat="message in messages | orderBy: 'time':true" class="message" ng-init="temp=(message.message).split(',')[0]"
+    ng-style="currentUser.id==temp && {'background-color':'#e4f7dc'}">
+     <img ng-src="images/{{temp}}.png" width="25px" height="25px" class="img-circle" onerror="this.src='images/avator.png';" >
+              <span ng-style="currentUser.id==temp && {'color':'green'}" ng-class="{self: message.self}">{{temp }} </span>
+              :: <span>{{(message.message).split(',')[1] }}</span>
+    <time class="text-primary">{{message.time | date: 'HH:mm'}}</time>
+         </p>
+         </div>
+     </body>
+           

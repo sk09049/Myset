@@ -1,0 +1,14 @@
+<div  ng-controller="jobControl as jctrl" class="col-xs-offset-3" style="padding-top:100px;"> 
+<h3 class="text-primary ">Selected Job Details</h3>
+<p>Job Id&emsp;&emsp;&ensp;&emsp;&emsp;:<span class="text-primary"> {{selectedJobDetail.id}}
+</span></p>
+<p>Job Title&ensp;&emsp;&ensp;&ensp;&ensp;&ensp;:<span class="text-info"> {{selectedJobDetail.jobTitle}}
+</span></p>
+<p>Qualification &ensp;&ensp;&ensp;:<span class="text-info"> {{selectedJobDetail.qualification}}
+</span></p>
+<p>Job Description :<span class="text-info" > {{selectedJobDetail.description}}
+</span></p>
+<br>
+<br>
+<button  class="btn btn-primary" ng-click="jctrl.applyForJob(selectedJobDetail.id)">Apply</button>
+</div>

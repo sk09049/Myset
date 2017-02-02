@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="resources/bootstrap/bootstrap.css">
+<script src="resources/bootstrap/jquery-3.1.1.js"></script>
+<script src="resources/bootstrap/bootstrap.js"></script>
+<script src="resources/angular/angular1-5.js"></script>
+<script src="resources/angular/angular-route.js"></script>
+<script src="resources/angular/angular-cookies.js"></script>
+<script src="resources/angular/sockjs-0.3.js"></script>
+<script src="resources/angular/stomp.js"></script>
+<script src="module/homemodule.js"></script>
+<script src="friendmodule/friendService.js"></script>
+<script src="usermodule/userController.js"></script>
+<script src="usermodule/userService.js"></script>
+<script src="jobmodule/jobService.js"></script>
+<script src="jobmodule/jobController.js"></script>
+<script src="friendmodule/friendController.js"></script>
+<script src="blogmodule/blogController.js"></script>
+<script src="blogmodule/blogService.js"></script>
+<script src="event/eventController.js"></script>
+<script src="event/eventService.js"></script>
+<script src="chatmodule/ChatController.js"></script>
+<script src="chatmodule/ChatService.js"></script>
+<script src="onetoonechat/ChatForumController.js"></script>
+<script src="onetoonechat/ChatForumService.js"></script>
+
+</head>
+<body ng-app="my" style="background:#f1f4f5;">
+<div ng-include="'view/nav-header.html'"></div>
+<div id="one" style="margin-top:-20px;">
+<div ng-view  style="
+background-color:#bff6d6;;
+min-height:500px;
+    padding-bottom: 20px;
+    display: table-cell;
+    height: auto;
+    overflow: hidden;
+    
+    "></div>
+</div>
+</body>
+<style>
+ .navbar-inverse .navbar-nav .open .dropdown-menu>li>a,.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color:#2A997E;
+    color:#ffffff;
+  }
+#one{
+margin-left:10%;
+height:600px;
+margin-bottom:10vh ;
+display: table;
+width:80vw;
+}
+</style>
+</html>

@@ -1,0 +1,10 @@
+<div ng-controller="userController as ctrl" style="padding-top:50px;">
+<form enctype="multipart/form-data" ng-submit="ctrl.imageUpload()">
+<div class="row">
+<div class="form-group col-xs-offset-2 col-xs-3">
+  <input type="file" ngf-select="ctrl.onFileSelect($files)" multiple>
+</div>
+</div>
+<input type="submit">
+</form>
+</div>

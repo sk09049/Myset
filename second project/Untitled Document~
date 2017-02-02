@@ -1,0 +1,13 @@
+project title:Collaboration(Web Application)
+----------------------------
+front end:
+-----------
+projectname:Collabaration-frondend
+Frame works used:Angular js
+-----------------------------------
+Back end:
+----------
+projectname:collabaration
+Frame works used:spring,spring websocket,hibernate
+---------------------------------------------------
+To run the application manullay create the table with same field 

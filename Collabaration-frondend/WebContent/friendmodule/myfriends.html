@@ -1,0 +1,12 @@
+<div ng-controller="friendControl as ctrl" ng-init="ctrl.myfriendsid()" style="padding-top:50px;">
+<div class="text-primary col-xs-offset-2"><h3>Friends List</h3></div>
+<hr>
+<div ng-repeat="x in ctrl.myfriends" class="col-xs-offset-2">
+<h4>Friend Id: {{x}} <span ng-repeat="y in ctrl.users"> <img ng-show="x==y.id && y.is_online=='Y'" src="images/isonline.png" width="10px" height="10px"></span>
+</h4>
+<div ng-controller="ChatForumController">
+<button ng-click="setFriendId(x)" class="btn btn-primary">Send Message</button>
+</div>
+<hr>
+</div>
+</div>

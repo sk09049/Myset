@@ -1,0 +1,40 @@
+<div ng-controller="blogControl as ctrl" ng-init="ctrl.init()" style="padding-top:50px;">
+<h3 class="col-xs-offset-2">List of blogs</h3>
+<hr>
+<div ng-repeat="x in ctrl.blogs" class="col-xs-offset-2">
+<h3 ng-show="x.errorCode=='404'">
+Sorry, {{x.errorMessage}}</h3>
+<p ng-hide="x.errorCode=='404'">Blog Id &ensp;&ensp;&ensp;:<span class="text-primary">{{x.id}}</span></p>
+<p >Blog title&ensp;&ensp;:<span class="text-primary">{{x.title}}</span></p>
+<p>Author &ensp;&ensp;&ensp;:<span class="text-primary">{{x.user_id}}</span></p>
+<p>Posted on:<span class="text-primary">{{x.date_time | date}}</span></p>
+<button data-toggle="collapse" data-target="#{{x.id}}" class="btn btn-success">View Details</button>
+<div id="{{x.id}}" class="collapse">
+{{x.description}}
+<h4 class="text-primary" >Comments</h4>
+<div ng-repeat="z in ctrl.blogcomments" style="width:60%;" >
+<div ng-show="x.id==z.blog_id" style="border:1px solid #7b7c7c;border-radius: 5px;" ng-style="($index+1)%2==0 && {'margin-left':'10px','color':'blue'}">
+<strong><span class="glyphicon glyphicon-user"></span>{{z.user_id}}</strong>
+<br>
+{{z.comment_time}}
+<p style="border-top:1px solid black"></p> 
+{{z.comments}}
+</div>
+<div style="padding-top:10px;"></div>
+</div>
+<button data-toggle="collapse" data-target="#{{x.id}}A" class="btn btn-default">Comment</button>
+<div id="{{x.id}}A" class="collapse">
+<form ng-submit=ctrl.saveComment(x.id)>
+<div class="row">
+<div class="form-group col-xs-3">
+<input type="text" placeholder="enter comments" required maxlength="100" class="form-control" ng-model="ctrl.comment.comments">
+</div>
+</div>
+<button type="submit" class="btn btn-info">Post</button>
+</form>
+</div>
+</div>
+<hr>
+<br>
+</div>
+</div>

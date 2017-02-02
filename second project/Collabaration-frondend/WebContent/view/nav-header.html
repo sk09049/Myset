@@ -1,0 +1,82 @@
+<div ng-show="currentUser.role=='ADMIN' || currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'">
+<h3>
+<a href="#/editprofile">
+<img  ng-src="images/{{currentUser.id}}.png" class="img-circle col-xs-offset-2" width="40px" height="40px" onerror="this.src='images/avator.png';" style=" position:absolute;top:10px;"></a>
+<span class="col-xs-offset-3">welcome , {{currentUser.id}}</span> </h3>
+<br>
+</div>
+<div ng-controller="userController as ctrl">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="#/">Home</a></li>
+      <li ng-show="currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'"><a href="#/chat">Chat</a>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Event
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+      <li ng-show="currentUser.role=='ADMIN'"><a href="#/postevent">Post Event</a></li>
+      <li><a href="#/event">View Events</a></li>
+      </ul>
+      </li>
+      <li ng-show="currentUser.role=='ADMIN'"><a href="#" ng-click="ctrl.newUserDeails()">New users</a></li>
+      <li><a class="dropdown-toggle" data-toggle="dropdown" >Blog
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu"  >
+            <li><a href="#/viewblog">View Blog</a></li>
+            <li ng-show="currentUser.role=='ADMIN'"><a href="#/newblogs">New Blogs</a></li>
+    <li  ng-show="currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'"><a href="#/createblog">Create Blog</a></li>
+    <li  ng-show="currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'"><a href="#/myblog">My Blog</a></li></ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Jobs
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu" ng-controller="jobControl as jctrl">
+      <li><a href="#/showjob">view jobs</a></li>
+    <li ng-show="currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'"><a href="#/applied">applied jobs</a></li>
+    <li ng-show="currentUser.role=='ADMIN'"><a href="#/postjob">post job</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+ <li  ng-hide="currentUser.role=='ADMIN' || currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'"><a  href="#/login">Login</a></li>
+ <li ng-hide="currentUser.role=='ADMIN' || currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'"class="news"><a  href="#/register">Register</a></li>
+  <li class="dropdown" ng-show="currentUser.role=='ADMIN' || currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Friends<span ng-show="reqcount>=1" class="label label-success label-as-badge">New</span>
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu"  >
+    <li ><a href="#/friends">Search friends</a></li>
+ <li><a href="#/friendrequest">Friend Requests <span ng-show="reqcount>=1">({{reqcount}})</span></a></li>
+ <li><a href="#/myrequest">My Requests</a></li>
+ <li><a href="#/myfriends">My Friends</a></li>
+ </ul>
+ </li>
+<li  ng-show="currentUser.role=='ADMIN' || currentUser.role=='alumni' || currentUser.role=='STUDENT' || currentUser.role=='EMPLOYEE'">
+<a href="#/login" ng-click="ctrl.logout()">Logout</a>
+</li>
+</ul>
+  </div>
+</nav>
+</div>
+ <style>
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: #3344ff;
+    color:#ffffff;
+  }
+.label-as-badge {
+    border-radius: 1em;
+}
+ .nav.navbar-nav li a {
+ color:#fff;
+ line-height: 40px;
+ font-size: 20px;
+ }
+ .navbar-inverse{
+ background-color: #3a4250;
+ border-color:#3a4250;
+ }
+ .nav.navbar-nav.navbar-right li a {
+ color:#fff;
+}
+ 
+</style>
+    

@@ -1,0 +1,46 @@
+
+<div ng-controller="ChatForumController"  style="padding-top:50px;">
+<button class="col-xs-offset-7 btn btn-warning" ng-click="getMessages()">Get My Conversations</button>
+<table ng-show="oldermessages!=''" class="table table-borderd">
+<tr>
+<th>ID</th><th>msgSender</th><th>msgReciever</th><th>Time</th><th>Message</th>
+</tr>
+<tr ng-repeat="x in oldermessages | orderBy: 'time':true" ng-style="currentUser.id==x.msg_senderId && {'background-color':'#babed8'}">
+<td ng-hide="x.errorCode=='404'">{{x.id}}
+</td>
+<td ><span ng-show="x.errorCode=='404'" class="lead text-danger">{{x.errorMessage}}</span>
+{{x.msg_senderId}}</td>
+<td>{{x.msg_recieverId}}</td>
+<td>{{x.time | date : 'medium'}}</td>
+<td>{{x.message}}</td>
+</tr>
+
+</table>
+<div class="col-xs-offset-2">
+<form ng-submit="addMessage()" name="messageForm">
+<div class="row">
+<div class="form-group col-xs-4">
+ <input type="text" placeholder="Compose a new message..." ng-model="message" class="form-control"/>
+ </div>
+ </div>
+   <div >
+     <span class="count col-xs-offset-1" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+       <button ng-disabled="message.length > max || message.length === 0" class="col-xs-offset-1 btn btn-success">send</button>
+       </div>
+      </form>
+     <hr />
+     <div ng-repeat="message in messages | orderBy: 'time':true" class="message" ng-init="uid=(message.message).split(',')[0];fid=(message.message).split(',')[1]"
+      ng-style="currentUser.id==uid && {'background-color':'#e4f7dc','height':'25px'};">
+     <div  ng-if="(currentUser.id==uid || currentUser.id==fid) && (friendId==fid || friendId==uid)">
+          <img ng-src="images/{{uid}}.png" width="25px" height="25px" class="img-circle" onerror="this.src='images/avator.png';" >
+     {{(message.message).split(',')[0]}}
+         :: <span  class="lead">{{(message.message).split(',')[2]}}</span>
+                <time class="text-primary">{{message.time | date: 'HH:mm'}}</time>
+         
+         </div>
+         </div>
+         </div>
+         
+     </div>    
+         
+           

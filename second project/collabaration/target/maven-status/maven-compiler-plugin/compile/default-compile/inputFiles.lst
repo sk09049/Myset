@@ -1,0 +1,7 @@
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/collaboration/model/User.java
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/collaboration/model/BaseDomain.java
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/collaboration/dao/Userdao.java
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/collaboration/config/ApplicationContextConfig.java
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/collaboration/daoimpl/Userdaoimpl.java
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/colloboration/controller/HomeController.java
+/home/ubuntu/workspace/collabaration/src/main/java/com/niit/project2/colloboration/controller/UserController.java

@@ -1,0 +1,40 @@
+<style>
+.temp:hover{
+color: #fff;
+background-color: #5cb85c;
+border-color: #4cae4c;
+}
+</style>
+<div ng-controller="userController as usrctrl" style="padding-top:200px;" >
+<h3 class=" col-xs-offset-4 text-primary">{{usrctrl.user.errorMessage}}</h3>
+<br>
+<form ng-show="usrctrl.user.errorCode=='405'" ng-submit="usrctrl.otpCheck()"class="col-xs-offset-3">
+<button class="btn btn-success" ng-click="usrctrl.getOtp()">GET OTP</button>
+<br>
+<div class="row">
+<div class="form-group col-xs-3">
+<input type="text" class="form-control col-sm-3" ng-model="usrctrl.otp" id="id"  placeholder="Enter otp " required>
+</div>
+</div>
+<input type="submit" class="btn btn-info" value="submit">
+</form>
+<form class="form-horizontal col-xs-offset-3" ng-submit="usrctrl.myclick()" ng-hide="usrctrl.user.errorCode=='405'">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="id">User id:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control col-sm-3" ng-model="usrctrl.user.id" id="id" maxlength="20" placeholder="Enter user id " required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Password:</label>
+    <div class="col-sm-4"> 
+      <input type="password" class="form-control" ng-model="usrctrl.user.password" id="pwd"  maxlength="20" placeholder="Enter password" required>
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default temp">Submit</button>
+     <a href="#/register"> <button  class="btn btn-default temp">Register</button></a>
+    </div>
+  </div>
+</form></div>

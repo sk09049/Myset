@@ -1,0 +1,18 @@
+<div ng-controller="blogControl as ctrl" ng-init="ctrl.getMyBlog()" style="padding-top:50px;">
+<h3 class="col-xs-offset-2 text-primary">My Blog Details</h3>
+<hr>
+<div ng-repeat="x in ctrl.myblogs" class="col-xs-offset-2">
+<h4 ng-show="x.errorCode=='404'" class="alert alert-info  col-xs-6">{{x.errorMessage}}</h4>
+<div ng-hide="x.errorCode=='404'">
+<p><span class="text-primary">Blog Id  &ensp;:</span>{{x.id}}</p>
+<p><span  class="text-primary">Blog title:</span>{{x.title}}</p>
+<button class="btn btn-info" data-toggle="collapse" data-target="#{{x.id}}">View Details</button>
+</div>
+<div id="{{x.id}}" class="collapse">
+<p><span class="text-primary">Blog description&ensp;&ensp;&ensp;:</span>{{x.description}}</p>
+<p><span class="text-primary">Blog Reject Reason:</span>{{x.reject_reason}}</p>
+<p><span class="text-primary">Posted on&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;:</span>{{x.date_time}}</p>
+</div>
+<hr ng-hide="x.errorCode=='404'">
+</div>
+</div>

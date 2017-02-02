@@ -1,0 +1,55 @@
+<div ng-controller="userController as ctrl" ng-show="currentUser!=''" style="padding-top:50px;">
+<h3 class="text-primary col-xs-offset-2">Edit Profile</h3>
+
+<img src="images/{{currentUser.id}}.png" class="img-circle col-xs-offset-2" width="100px" height="100px" onerror="this.src='images/avator.png';" >
+<br>
+<a data-toggle="collapse" data-target="#demo" class="col-xs-offset-2">Update Profile Picture</a>
+
+<div id="demo" class="collapse">
+<form ng-submit="ctrl.uploadImage()" >
+<div class="row" >
+<input type="file" fileread="uploadme" class="btn btn-default class="col-xs-offset-2">
+</div>
+<input type="submit" value="upload" class="btn btn-success">
+</form>
+</div>
+<br>
+<form class="col-xs-offset-2" ng-submit="ctrl.editProfile()">
+<br>
+<div class="row">
+<div class="form-group col-xs-4">
+<input type="text"  value="{{currentUser.id}}" readonly class="form-control">
+</div >
+</div>
+<div class="row">
+<div class="form-group col-xs-4">
+<input type="text" onblur="callf()" value="{{currentUser.name}}"  id="ea1" maxlength="20" class="form-control"  required>
+</div >
+</div>
+<div class="row">
+<div class="form-group col-xs-4">
+<input type="password"  ng-maxlength="20" id="ea2" class="form-control"  placeholder="change password">
+</div >
+</div>
+<div class="row">
+<div class="form-group col-xs-4">
+<input type="text"  value="{{currentUser.mobile}}" id="ea3" maxlength="12" placeholder="enter mobile no" class="form-control" required>
+</div >
+</div>
+<div class="row">
+<div class="form-group col-xs-4">
+<input type="text"  value="{{currentUser.address}}" id="ea4" maxlength="100"  placeholder="enter address" class="form-control" required>
+</div ></div>
+<div class="row">
+<div class="form-group col-xs-4">
+<input type="email"  value="{{currentUser.email}}" id="ea5" maxlength="30"  placeholder="enter email id" class="form-control" required ng-blur="ctrl.emailcheck()">
+<p id="a2"></p>
+</div >
+</div>
+<div class="row">
+<div class="form-group col-xs-1">
+<input type="submit" class="btn btn-success" value="Update">
+</div>
+</div> 
+</form>
+</div>

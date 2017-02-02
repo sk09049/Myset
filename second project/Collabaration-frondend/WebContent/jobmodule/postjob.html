@@ -1,0 +1,30 @@
+<div ng-show="currentUser.role=='ADMIN'" ng-controller="jobControl as jctrl" style="padding-top:100px;" >
+<h3 ng-show="jctrl.job.errorMessage!=''" class="col-xs-offset-2 col-xs-6 alert alert-success">{{jctrl.job.errorMessage}}</h3>
+
+<form class="col-xs-offset-4  col-xs-3" ng-submit="jctrl.postJob()">
+<div class="row">
+<div class="form-group">
+<input type="text" class="form-control" ng-model="jctrl.job.id" placeholder="enter job id"required>
+</div>
+</div>
+<div class="row">
+<div class="form-group">
+<input type="text" class="form-control" ng-model="jctrl.job.jobTitle" placeholder="enter jobTitle" required>
+</div>
+</div>
+<div class="row">
+<div class="form-group">
+<input type="text" class="form-control" ng-model="jctrl.job.qualification" placeholder="enter qualification" required>
+</div>
+</div>
+<div class="row">
+<div class="form-group">
+<textarea class="form-control" ng-model="jctrl.job.description" rows="6" cols="40" required placeholder="enter job description"></textarea>
+</div></div>
+<div class="row">
+<input type="submit" class="btn btn-success" value="submit">
+<input type="reset" class="btn btn-danger" value="reset">
+</div>
+
+</form>
+</div>

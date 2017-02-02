@@ -1,0 +1,49 @@
+<div ng-controller="userController as ctrl" >
+<form ng-submit="ctrl.register()" class="form-horizontal col-xs-offset-4"  style="padding-top:100px;">
+<div class="radio">
+  <label>
+<input type="radio" name="role" value="STUDENT" ng-model="ctrl.user.role" required >student
+  </label>
+  <label>
+<input type="radio" name="role" value="ALUMNI" ng-model="ctrl.user.role" required >alumni
+  </label>
+  <label>
+<input type="radio" name="role" value="EMPLOYEE" ng-model="ctrl.user.role" required>employee
+  </label>
+</div>
+<br>
+<div class="form-group">
+    <div class="col-sm-4">
+      <input type="text" class="form-control col-sm-3"  ng-blur="ctrl.check()" ng-model="ctrl.user.id"  placeholder="Enter user id " maxlength="20" required>
+    <div id="a1" ></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+<input type="text" name="name" class="form-control col-sm-3"  placeholder="enter name"  maxlength="20" ng-model="ctrl.user.name">
+  </div>
+  </div><div class="form-group">
+    <div class="col-sm-4">
+<input type="password" name="password" class="form-control col-sm-3" placeholder="enter password" maxlength="20" maxlength="20" ng-model="ctrl.user.password">
+    </div>
+  </div><div class="form-group">
+    <div class="col-sm-4">
+<input type="text" name="mobile" class="form-control col-sm-3" placeholder="enter mobile"  maxlength="12" ng-model="ctrl.user.mobile">
+    </div>
+  </div><div class="form-group">
+    <div class="col-sm-4">
+<input type="email" name="email" class="form-control col-sm-3" ng-blur="ctrl.emailcheck()"  placeholder="enter email" maxlength="30" ng-model="ctrl.user.email">
+        <div id="a2" ></div>
+    </div>
+  </div><div class="form-group">
+    <div class="col-sm-4">
+<input type="text"  name="address" class="form-control col-sm-3" placeholder="enter address" maxlength="100" ng-model="ctrl.user.address">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+    </div>
+</form>
+</div>

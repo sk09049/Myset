@@ -1,0 +1,15 @@
+<div ng-controller="friendControl as ctrl" ng-init="ctrl.getFriendRequests()" style="padding-top:50px;">
+<div class="row">
+<div ng-show="ctrl.friend.errorCode!=''" class="col-xs-offset-3 col-xs-6 alert alert-info"><h4>{{ctrl.friend.errorMessage}}</h4></div>
+</div>
+<br>
+<div ng-repeat="x in ctrl.requests" class="col-xs-offset-2">
+<h3 class="text-primary">Friend Requests</h3>
+<hr>
+<h4 ng-show="x.errorCode=='404'">You Don't have Any Friend Requests</h4>
+<h4 ng-hide="x.errorCode=='404'">{{x.user_id}} ,send a friend request to you</h4>
+
+<button class=" btn btn-success" ng-hide="x.errorCode=='404'" ng-click="ctrl.acceptRequest(x.user_id)">Accept</button> <button class="btn btn-danger" ng-click="ctrl.rejectrequst(x.user_id)" ng-hide="x.errorCode=='404'">Reject</button>
+<br>
+</div>
+</div>
